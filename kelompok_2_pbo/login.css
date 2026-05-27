@@ -1,0 +1,447 @@
+/* =========================
+   RESET
+========================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI', sans-serif;
+}
+
+body{
+  background:#f4f7fb;
+  overflow-x:hidden;
+}
+
+/* =========================
+   LOGIN PAGE
+========================= */
+
+.login-body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  /* Menggunakan RGBA agar gradasi agak transparan sehingga teks berjalan di belakangnya terlihat estetik */
+  background:
+    linear-gradient(
+      135deg,
+      rgba(37, 99, 235, 0.85),
+      rgba(79, 70, 229, 0.85),
+      rgba(124, 58, 237, 0.85)
+    );
+  position: relative;
+  z-index: 2; /* Menjaga agar form login tetap berada di lapisan atas */
+}
+
+/* Penampung Utama Animasi Teks di Latar Belakang (Di belakang lapisan gradasi) */
+.bg-text-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; /* Menyebarkan baris teks secara vertikal */
+  background: #0f172a; /* Warna dasar gelap (Slate-900) agar teks kontras */
+  z-index: 1; /* Berada di lapisan paling dasar */
+  padding: 50px 0;
+}
+
+/* Jalur gerak teks bergulir */
+.marquee-track {
+  display: flex;
+  width: 200%;
+  white-space: nowrap;
+}
+
+/* Gaya Karakter Teks Berjalan */
+.marquee-track span {
+  font-size: 8rem; /* Ukuran teks besar */
+  font-weight: 900; /* Tebal maksimal */
+  color: rgba(255, 255, 255, 0.04); /* Transparansi tinggi agar samar-samar di background */
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  display: inline-block;
+  animation: scrollLeft 25s linear infinite; /* Kecepatan gerak ke kiri */
+}
+
+/* Membuat baris tertentu berjalan ke arah sebaliknya (Kanan) */
+.marquee-track.reverse span {
+  animation: scrollRight 25s linear infinite;
+}
+
+.login-container{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.login-box{
+  width:380px;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(15px);
+  border:1px solid rgba(255,255,255,0.2);
+  padding:40px;
+  border-radius:25px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  text-align:center;
+  animation:fadeIn 1s ease;
+}
+
+.login-box h1{
+  color:white;
+  margin-bottom:10px;
+  font-size:35px;
+}
+
+.login-box p{
+  color:#e5e7eb;
+  margin-bottom:25px;
+}
+
+.login-box input{
+  width:100%;
+  padding:14px;
+  margin-bottom:18px;
+  border:none;
+  border-radius:12px;
+  outline:none;
+  background:rgba(255,255,255,0.2);
+  color:white;
+  font-size:15px;
+}
+
+.login-box input::placeholder{
+  color:#e5e7eb;
+}
+
+.login-box button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  background:white;
+  color:#2563eb;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.login-box button:hover{
+  transform:translateY(-3px);
+  background:#dbeafe;
+}
+
+.switch-text{
+  margin-top:20px;
+  color:white;
+  font-size:14px;
+}
+
+.switch-text a{
+  color:#facc15;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.switch-text a:hover{
+  text-decoration:underline;
+}
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.container{
+  display:flex;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+  width:250px;
+  height:100vh;
+  background:white;
+  padding:25px;
+  box-shadow:2px 0 10px rgba(0,0,0,0.05);
+  position:fixed;
+}
+
+.sidebar h2{
+  color:#2563eb;
+  margin-bottom:40px;
+  text-align:center;
+}
+
+.sidebar ul{
+  list-style:none;
+}
+
+.sidebar li{
+  padding:15px;
+  border-radius:12px;
+  margin-bottom:15px;
+  cursor:pointer;
+  transition:0.3s;
+  font-weight:500;
+}
+
+.sidebar li:hover,
+.sidebar li.active{
+  background:#2563eb;
+  color:white;
+  transform:translateX(5px);
+}
+
+/* MAIN */
+
+.main{
+  margin-left:250px;
+  padding:30px;
+  width:100%;
+}
+
+/* HEADER */
+
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:30px;
+}
+
+.header h1{
+  font-size:32px;
+  color:#111827;
+}
+
+.header p{
+  color:#4b5563;
+  font-size:16px;
+}
+
+/* CARD */
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  margin-bottom:30px;
+}
+
+.card{
+  background:white;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.08);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+.card h2{
+  color:#2563eb;
+  font-size:35px;
+  margin-bottom:10px;
+}
+
+.card p{
+  color:#6b7280;
+  font-size:15px;
+}
+
+/* FORM */
+
+.form-box{
+  background:white;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.08);
+  margin-bottom:30px;
+}
+
+.form-box h2{
+  margin-bottom:20px;
+  color:#111827;
+}
+
+.form-box input{
+  width:100%;
+  padding:14px;
+  border:1px solid #d1d5db;
+  border-radius:12px;
+  margin-bottom:15px;
+  outline:none;
+  transition:0.3s;
+}
+
+.form-box input:focus{
+  border-color:#2563eb;
+}
+
+.form-box button{
+  background:#2563eb;
+  color:white;
+  border:none;
+  padding:14px 20px;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+.form-box button:hover{
+  background:#1e40af;
+  transform:translateY(-2px);
+}
+
+/* TASK */
+
+.task-list{
+  background:white;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.task-list h2{
+  margin-bottom:20px;
+}
+
+.task{
+  background:#f9fafb;
+  border-left:6px solid #2563eb;
+  padding:20px;
+  border-radius:15px;
+  margin-bottom:20px;
+  transition:0.3s;
+}
+
+.task:hover{
+  transform:scale(1.01);
+}
+
+.task h3{
+  margin-bottom:10px;
+  color:#111827;
+}
+
+.task p{
+  margin-bottom:6px;
+  color:#4b5563;
+}
+
+.task button{
+  margin-top:12px;
+  margin-right:10px;
+  padding:10px 14px;
+  border:none;
+  border-radius:10px;
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.task button:hover{
+  opacity:0.85;
+}
+
+.edit{
+  background:#f59e0b;
+}
+
+.hapus{
+  background:#ef4444;
+}
+
+.selesai{
+  background:#10b981;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* Animasi Pergeseran Teks ke Kiri */
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Animasi Pergeseran Teks ke Kanan */
+@keyframes scrollRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+  .sidebar{
+    width:100%;
+    height:auto;
+    position:relative;
+  }
+
+  .main{
+    margin-left:0;
+  }
+
+  .container{
+    flex-direction:column;
+  }
+
+  .cards{
+    grid-template-columns:1fr;
+  }
+}
+
+.alert-danger {
+  background-color: #ffe0e3;
+  color: #ff3344;
+  border: 1px solid #ffccd1;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  text-align: center;
+  font-weight: 500;
+  opacity: 1;
+  transition: opacity 0.5s ease, transform 0.5s ease; 
+}
+
+/* Class baru untuk memicu efek menghilang */
+.alert-danger.fade-out {
+  opacity: 0;
+  transform: translateY(-10px);
+}
